@@ -1,5 +1,6 @@
 const cells = document.querySelectorAll(".cell");
 const userInstruction = document.getElementsByClassName("instruction");
+const grid = document.querySelector(".grid");
 
 let flag = true;
 let count = 0;
@@ -18,6 +19,12 @@ for(let i = 0; i < cells.length; i++){
     remove(testArray);
     },{once: true})
 }
+
+// Adding eventlistner to buttons using event delegation
+grid.addEventListener("click",(e)=>{
+    console.log(e.target);
+})
+
 
 // IIFE used because Factory function needs instanciating 
 const  displayController = (()=>{

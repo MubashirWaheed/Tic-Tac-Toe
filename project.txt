@@ -1,0 +1,7 @@
+1) Add eventListner using event delegation.
+    - Check if cell already clicked by passing cell id to display controller
+2) Create players and rotate turns between players
+3) Populate the UI    
+4) Add sign in the array
+5) Check for draw
+6) check for winner.  
