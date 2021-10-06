@@ -54,10 +54,16 @@ const gameController = (()=>{
     const checkDraw = ()=>{
         return gameBoardArray.includes("");
     };
+
+    const changeInstruction = (sign)=>{
+        sign == "X"? instruction.innerText = "Player two's turn":instruction.innerText = "Player one's turn";
+    }
+
     return{
         checkWinner,
         addInArray,
-        checkDraw
+        checkDraw,
+        changeInstruction
     }
 
 })();
@@ -65,25 +71,21 @@ const gameController = (()=>{
 const identifySign = (flagValue)=>{
     if(flagValue){
         playerFlag = false;
-        instruction.innerText = "Player one's turn";
         sign = "X";
     }else{
         playerFlag = true;
-        instruction.innerText = "Player two's turn";
         sign = "O";
     }
     return sign;
 };
 
-// const checkDraw = ()=>{
-//     return gameBoardArray.includes("");
-// };
 
 function play(e){
     if(e.target.innerText == "X" || e.target.innerText == "O") return;
     let sign = identifySign(playerFlag);
     displayController.displayMark(e.target.id,sign);
     gameController.addInArray(e.target.id,sign);
+    gameController.changeInstruction(sign);
     if(!gameController.checkDraw()){
         instruction.innerText = "Draw";
     }
@@ -97,7 +99,6 @@ function reset(){
     for(let x = 0; x < 9; x++){
         displayController.displayMark(x,"");
     }
-
 }
 
 grid.addEventListener("click",play);
